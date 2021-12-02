@@ -4,11 +4,11 @@ import           Data.Foldable
 import           Text.Parsec
 import           Text.Parsec.String
 
+fname :: String
+fname =  "data/Day2.txt"
+
 main :: IO ()
-main = do
-  input <- readFile "data/Day2.txt"
-  printE $ solve1 input
-  printE $ solve2 input
+main = run fname solve1 solve2
 
 data Command
     = Forward Int
@@ -26,24 +26,23 @@ pCommands = many (pCommand <* newline) <* spaces
 
     pCom name constr = string name *> space *> (constr <$> pInt)
 
-doIt :: ([Command] -> Int) -> String -> Either ParseError Int
-doIt f input = f <$> parse (pCommands <* eof) "Day2.txt" input
+withFunction :: ([Command] -> Int) -> String -> IO ()
+withFunction f = printE . fmap f . parse (pCommands <* eof) fname
 
-solve1 :: String -> Either ParseError Int
-solve1 = doIt (uncurry (*) . foldl' sumCommand1 (0,0))
+solve1 :: String -> IO ()
+solve1 = withFunction $ uncurry (*) . foldl' go (0,0)
+  where
+    go (x, y) com = case com of
+      Forward n -> (x + n, y)
+      Up n      -> (x, y - n)
+      Down n    -> (x, y + n)
 
-sumCommand1 :: (Int, Int) -> Command -> (Int, Int)
-sumCommand1 (x, y) com = case com of
-  Forward n -> (x + n, y)
-  Up n      -> (x, y - n)
-  Down n    -> (x, y + n)
+solve2 :: String -> IO ()
+solve2 = withFunction $ prod3 . foldl' go (0,0,0)
+  where
+    prod3 (x,y,_) = x * y
 
-solve2 :: String -> Either ParseError Int
-solve2 = doIt (prod3 . foldl' sumCommand2 (0,0,0))
-  where prod3 (x,y,_) = x * y
-
-sumCommand2 :: (Int, Int, Int) -> Command -> (Int, Int, Int)
-sumCommand2 (x, y, aim) com = case com of
-  Forward n -> (x + n, y + aim * n, aim)
-  Up n      -> (x, y, aim - n)
-  Down n    -> (x, y, aim + n)
+    go (x, y, aim) com = case com of
+      Forward n -> (x + n, y + aim * n, aim)
+      Up n      -> (x, y, aim - n)
+      Down n    -> (x, y, aim + n)

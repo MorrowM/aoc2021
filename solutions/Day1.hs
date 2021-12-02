@@ -1,16 +1,20 @@
 import           Common
 
 main :: IO ()
-main = do
-  input <- readLines "data/Day1.txt"
-  print $ solve1 input
-  print $ solve2 input
+main = run "data/Day1.txt" solve1 solve2
 
-solve1 :: [Int] -> Int
-solve1 = length . filter id . (zipWith (<) <*> tail)
+withFunction :: ([Int] -> Int) -> String -> IO ()
+withFunction f = print . f . map read . lines
 
-slidingWindow :: [Int] -> [Int]
-slidingWindow xs = zipWith3 (\a b c -> a + b + c) xs (drop 1 xs) (drop 2 xs)
+solve1 :: String -> IO ()
+solve1 = withFunction count
 
-solve2 :: [Int] -> Int
-solve2 = solve1 . slidingWindow
+count :: [Int] -> Int
+count = length . filter id . (zipWith (<) <*> tail)
+
+
+solve2 :: String -> IO ()
+solve2 = withFunction $ count . slidingWindow
+  where
+    slidingWindow xs = zipWith3 (\a b c -> a + b + c) xs (drop 1 xs) (drop 2 xs)
+
