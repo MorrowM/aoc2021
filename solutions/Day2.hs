@@ -27,7 +27,7 @@ pCommands = many (pCommand <* newline) <* spaces
     pCom name constr = string name *> space *> (constr <$> pInt)
 
 doIt :: ([Command] -> Int) -> String -> Either ParseError Int
-doIt f input = f  <$> parse (pCommands <* eof) "Day2.txt" input
+doIt f input = f <$> parse (pCommands <* eof) "Day2.txt" input
 
 solve1 :: String -> Either ParseError Int
 solve1 = doIt (uncurry (*) . foldl' sumCommand1 (0,0))
