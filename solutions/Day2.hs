@@ -39,7 +39,7 @@ sumCommand1 (x, y) com = case com of
   Down n    -> (x, y + n)
 
 solve2 :: String -> Either ParseError Int
-solve2 = doIt (prod3. foldl' sumCommand2 (0,0,0))
+solve2 = doIt (prod3 . foldl' sumCommand2 (0,0,0))
   where prod3 (x,y,_) = x * y
 
 sumCommand2 :: (Int, Int, Int) -> Command -> (Int, Int, Int)
