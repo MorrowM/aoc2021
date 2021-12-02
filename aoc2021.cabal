@@ -1,0 +1,31 @@
+cabal-version: 2.4
+name:          aoc2021
+version:       0.1.0.0
+author:        MorrowM
+maintainer:    themorrowm@gmail.com
+
+common solution
+  build-depends:
+    , aoc2021
+    , base     ^>=4.14.3.0
+    , lens
+    , parsec
+
+  hs-source-dirs:   solutions
+  default-language: Haskell2010
+
+library
+  build-depends:
+    , base    ^>=4.14.3.0
+    , parsec
+
+  hs-source-dirs:  common
+  exposed-modules: Common
+
+executable day1
+  import:  solution
+  main-is: Day1.hs
+
+executable day2
+  import:  solution
+  main-is: Day2.hs
