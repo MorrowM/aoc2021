@@ -26,10 +26,10 @@ pCommands = many (pCommand <* newline) <* spaces
 
     pCom name constr = string name *> space *> (constr <$> pInt)
 
-withFunction :: ([Command] -> Int) -> String -> IO ()
-withFunction f = printE . fmap f . parse (pCommands <* eof) fname
+withFunction :: ([Command] -> Int) -> String -> String
+withFunction f = showE . fmap f . parse (pCommands <* eof) fname
 
-solve1 :: String -> IO ()
+solve1 :: String -> String
 solve1 = withFunction $ uncurry (*) . foldl' go (0,0)
   where
     go (x, y) com = case com of
@@ -37,7 +37,7 @@ solve1 = withFunction $ uncurry (*) . foldl' go (0,0)
       Up n      -> (x, y - n)
       Down n    -> (x, y + n)
 
-solve2 :: String -> IO ()
+solve2 :: String -> String
 solve2 = withFunction $ prod3 . foldl' go (0,0,0)
   where
     prod3 (x,y,_) = x * y

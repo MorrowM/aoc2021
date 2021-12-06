@@ -13,12 +13,12 @@ getLines = fmap lines . readFile
 pInt :: Parser Int
 pInt = read <$> many1 digit
 
-printE :: (Show a, Show b) => Either a b -> IO ()
-printE = either print print
+showE :: (Show a, Show b) => Either a b -> String
+showE = either show show
 
-run :: FilePath -> (String -> IO a) -> (String -> IO b) -> IO ()
+run :: FilePath -> (String -> String) -> (String -> String) -> IO ()
 run fname solve1 solve2 = do
   input <- readFile fname
-  solve1 input
-  solve2 input
+  putStrLn $ solve1 input
+  putStrLn $ solve2 input
   pure ()

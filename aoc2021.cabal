@@ -7,7 +7,8 @@ maintainer:    themorrowm@gmail.com
 common solution
   build-depends:
     , aoc2021
-    , base     ^>=4.14.3.0
+    , base        ^>=4.14.3.0
+    , containers
     , lens
     , parsec
 
@@ -29,3 +30,11 @@ executable day1
 executable day2
   import:  solution
   main-is: Day2.hs
+
+executable day3
+  import:  solution
+  main-is: Day3.hs
+
+executable day5
+  import:  solution
+  main-is: Day5.hs
