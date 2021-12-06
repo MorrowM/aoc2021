@@ -3,7 +3,7 @@ import           Common
 import           Data.List
 
 main :: IO ()
-main = run "data/Day3.txt" solve1 solve2
+main = run 3 solve1 solve2
 
 withFunction :: ([String] -> Int) -> String -> String
 withFunction f = show . f . lines
@@ -26,4 +26,4 @@ solve1 = withFunction go
         epsilon = fromBin $ mostCommon min <$> bits
 
 solve2 :: String -> String
-solve2 _ = "" -- TODO
+solve2 = todo

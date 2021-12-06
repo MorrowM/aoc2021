@@ -7,7 +7,7 @@ fname :: String
 fname =  "data/Day2.txt"
 
 main :: IO ()
-main = run fname solve1 solve2
+main = run 2 solve1 solve2
 
 data Command
     = Forward Int

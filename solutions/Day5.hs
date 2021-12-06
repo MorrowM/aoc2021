@@ -6,7 +6,7 @@ import           Text.Parsec        hiding (Line)
 import           Text.Parsec.String
 
 main :: IO ()
-main = run "data/Day5.txt" solve1 solve2
+main = run 5 solve1 solve2
 
 data Point = Point
   { x :: Int

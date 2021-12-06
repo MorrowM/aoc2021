@@ -5,7 +5,7 @@ import           Text.Parsec
 import           Text.Parsec.String
 
 main :: IO ()
-main = run "data/Day6.txt" solve1 solve2
+main = run 6 solve1 solve2
 
 pFish :: Parser [Int]
 pFish = sepBy pInt (char ',')

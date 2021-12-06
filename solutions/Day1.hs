@@ -1,7 +1,7 @@
 import           Common
 
 main :: IO ()
-main = run "data/Day1.txt" solve1 solve2
+main = run 1 solve1 solve2
 
 withFunction :: ([Int] -> Int) -> String -> String
 withFunction f = show . f . map read . lines

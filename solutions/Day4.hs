@@ -4,7 +4,7 @@ import           Text.Parsec
 import           Text.Parsec.String
 
 main :: IO ()
-main = run "data/Day4.txt" solve1 solve2
+main = run 4 solve1 solve2
 
 solve1 :: String -> String
 solve1 = withInput runBingo
