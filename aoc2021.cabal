@@ -16,8 +16,12 @@ common solution
     -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints
     -fhide-source-paths -Wno-unused-do-bind
 
-  hs-source-dirs:   solutions
-  default-language: Haskell2010
+  default-extensions:
+    NumericUnderscores
+    TupleSections
+
+  hs-source-dirs:     solutions
+  default-language:   Haskell2010
 
 library
   build-depends:

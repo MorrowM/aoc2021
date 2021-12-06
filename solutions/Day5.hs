@@ -1,4 +1,3 @@
-{-# LANGUAGE TupleSections #-}
 import           Common
 import           Data.Foldable
 import           Data.Map           (Map)

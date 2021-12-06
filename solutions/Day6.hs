@@ -1,5 +1,3 @@
-{-# LANGUAGE LambdaCase    #-}
-{-# LANGUAGE TupleSections #-}
 import           Common
 import           Data.IntMap        (IntMap)
 import qualified Data.IntMap        as M
