@@ -1,6 +1,7 @@
 {-# LANGUAGE RankNTypes #-}
 module Common where
 import           Control.Monad
+import           Data.Foldable
 import           Text.Parsec
 import           Text.Parsec.String
 
@@ -22,3 +23,6 @@ run fname solve1 solve2 = do
   putStrLn $ solve1 input
   putStrLn $ solve2 input
   pure ()
+
+compose :: [a -> a] -> a -> a
+compose = foldl' (.) id

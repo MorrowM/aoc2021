@@ -1,9 +1,6 @@
 {-# LANGUAGE RankNTypes #-}
 import           Common
-import           Data.Foldable
 import           Data.List
-import           Debug.Trace
-import           Numeric
 
 main :: IO ()
 main = run "data/Day3.txt" solve1 solve2
@@ -28,4 +25,5 @@ solve1 = withFunction go
         gamma = fromBin $ mostCommon max <$> bits
         epsilon = fromBin $ mostCommon min <$> bits
 
+solve2 :: String -> String
 solve2 _ = "" -- TODO

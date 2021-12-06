@@ -3,7 +3,6 @@ import           Common
 import           Data.Foldable
 import           Data.Map           (Map)
 import qualified Data.Map.Strict    as M
-import           Debug.Trace
 import           Text.Parsec        hiding (Line)
 import           Text.Parsec.String
 

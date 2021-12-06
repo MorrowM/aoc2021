@@ -9,8 +9,12 @@ common solution
     , aoc2021
     , base        ^>=4.14.3.0
     , containers
-    , lens
     , parsec
+
+  ghc-options:
+    -Wall -Widentities -Wincomplete-record-updates
+    -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints
+    -fhide-source-paths -Wno-unused-do-bind
 
   hs-source-dirs:   solutions
   default-language: Haskell2010
@@ -20,8 +24,9 @@ library
     , base    ^>=4.14.3.0
     , parsec
 
-  hs-source-dirs:  common
-  exposed-modules: Common
+  hs-source-dirs:   common
+  exposed-modules:  Common
+  default-language: Haskell2010
 
 executable day1
   import:  solution
@@ -38,3 +43,7 @@ executable day3
 executable day5
   import:  solution
   main-is: Day5.hs
+
+executable day6
+  import:  solution
+  main-is: Day6.hs

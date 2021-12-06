@@ -1,5 +1,4 @@
 import           Common
-import           Data.Either
 import           Data.Foldable
 import           Text.Parsec
 import           Text.Parsec.String
