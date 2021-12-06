@@ -1,6 +1,6 @@
 import           Common
 import           Data.IntMap        (IntMap)
-import qualified Data.IntMap        as M
+import qualified Data.IntMap.Strict as M
 import           Text.Parsec
 import           Text.Parsec.String
 
