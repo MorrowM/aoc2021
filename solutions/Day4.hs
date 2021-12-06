@@ -1,6 +1,5 @@
 import           Common
 import           Data.List
-import           Debug.Trace
 import           Text.Parsec
 import           Text.Parsec.String
 
@@ -14,7 +13,7 @@ solve2 :: String -> String
 solve2 = withInput runBingo'
 
 withInput :: ([Int] -> [Board] -> (Int, Board)) -> String -> String
-withInput bingoFunc = showE . fmap (uncurry score . uncurry bingoFunc . (\x -> traceShow (length $ snd x) x)) . parse (pNumsAndBoards <* eof) "Day4.txt"
+withInput bingoFunc = showE . fmap (uncurry score . uncurry bingoFunc) . parse (pNumsAndBoards <* eof) "Day4.txt"
 
 data Mark = Unmarked | Marked deriving (Eq, Show, Ord)
 data Cell = Cell { cell :: Int, status :: Mark } deriving (Eq, Show, Ord)
