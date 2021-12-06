@@ -44,6 +44,10 @@ executable day3
   import:  solution
   main-is: Day3.hs
 
+executable day4
+  import:  solution
+  main-is: Day4.hs
+
 executable day5
   import:  solution
   main-is: Day5.hs
