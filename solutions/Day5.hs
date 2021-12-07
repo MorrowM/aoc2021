@@ -1,9 +1,7 @@
 import           Common
 import           Data.Foldable
-import           Data.Map           (Map)
-import qualified Data.Map.Strict    as M
-import           Text.Parsec        hiding (Line)
-import           Text.Parsec.String
+import           Data.Map        (Map)
+import qualified Data.Map.Strict as M
 
 main :: IO ()
 main = run 5 solve1 solve2

@@ -1,7 +1,5 @@
 import           Common
 import           Data.Foldable
-import           Text.Parsec
-import           Text.Parsec.String
 
 fname :: String
 fname =  "data/Day2.txt"

@@ -1,8 +1,6 @@
 import           Common
 import           Data.IntMap        (IntMap)
 import qualified Data.IntMap.Strict as M
-import           Text.Parsec
-import           Text.Parsec.String
 
 main :: IO ()
 main = run 6 solve1 solve2

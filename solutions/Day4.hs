@@ -1,7 +1,5 @@
 import           Common
 import           Data.List
-import           Text.Parsec
-import           Text.Parsec.String
 
 main :: IO ()
 main = run 4 solve1 solve2

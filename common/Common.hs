@@ -1,10 +1,23 @@
 {-# LANGUAGE RankNTypes          #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-module Common where
+module Common
+  ( module Text.Parsec
+  , Parser
+  , readLines
+  , getLines
+  , parseAndRun
+  , pInt
+  , pComma
+  , run
+  , showE
+  , todo
+  , Todo (..)
+  , compose
+  ) where
 import           Control.Exception
 import           Control.Monad
 import           Data.Foldable
-import           Text.Parsec
+import           Text.Parsec        hiding (Line, count)
 import           Text.Parsec.String
 import           Text.Printf
 
@@ -16,6 +29,13 @@ getLines = fmap lines . readFile
 
 pInt :: Parser Int
 pInt = read <$> many1 digit
+
+pComma :: Parser Char
+pComma = char ','
+
+parseAndRun :: Show output => Int -> Parser input -> (input -> output) -> (input -> output) -> IO ()
+parseAndRun day p solve1 solve2 = run day (runOne solve1) (runOne solve2)
+  where runOne f = showE . fmap f . parse (p <* spaces <* eof) "<input>"
 
 showE :: (Show a, Show b) => Either a b -> String
 showE = either show show
