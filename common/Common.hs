@@ -13,10 +13,14 @@ module Common
   , todo
   , Todo (..)
   , compose
+  , module Data.Foldable
+  , note
+  , justify
   ) where
 import           Control.Exception
 import           Control.Monad
 import           Data.Foldable
+import           Data.Maybe
 import           Text.Parsec        hiding (Line, count)
 import           Text.Parsec.String
 import           Text.Printf
@@ -59,3 +63,10 @@ todo = throw Todo
 
 compose :: [a -> a] -> a -> a
 compose = foldl' (.) id
+
+note :: a -> Maybe b -> Either a b
+note a Nothing  = Left a
+note _ (Just b) = Right b
+
+justify :: String -> Maybe a -> a
+justify = fromMaybe . error
