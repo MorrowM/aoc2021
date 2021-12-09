@@ -10,6 +10,7 @@ common solution
     , aoc2021
     , base         ^>=4.14.3.0
     , containers
+    , grid
     , parsec
 
   ghc-options:
@@ -64,3 +65,7 @@ executable day7
 executable day8
   import:  solution
   main-is: Day8.hs
+
+executable day9
+  import:  solution
+  main-is: Day9.hs
