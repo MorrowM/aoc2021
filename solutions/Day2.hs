@@ -1,5 +1,4 @@
 import           Common
-import           Data.Foldable
 
 fname :: String
 fname =  "data/Day2.txt"

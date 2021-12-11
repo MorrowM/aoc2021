@@ -2,6 +2,11 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 module Common
   ( module Text.Parsec
+  , module Control.Monad
+  , module Data.Maybe
+  , module Data.List
+  , module Data.Either
+  , module Data.Bifunctor
   , Parser
   , readLines
   , getLines
@@ -16,14 +21,21 @@ module Common
   , module Data.Foldable
   , note
   , justify
+  , readMaybe
+  , middle
   ) where
 import           Control.Exception
 import           Control.Monad
+import           Data.Bifunctor
+import           Data.Either
 import           Data.Foldable
+import           Data.List
 import           Data.Maybe
-import           Text.Parsec        hiding (Line, count)
+import           GHC.Stack
+import           Text.Parsec        hiding (Line, count, uncons)
 import           Text.Parsec.String
 import           Text.Printf
+import           Text.Read
 
 readLines :: Read a => FilePath -> IO [a]
 readLines = fmap (map read) . getLines
@@ -70,3 +82,10 @@ note _ (Just b) = Right b
 
 justify :: String -> Maybe a -> a
 justify = fromMaybe . error
+
+middle :: HasCallStack => [a] -> a
+middle xs = go xs xs
+  where
+    go (_:_:as) (_:bs) = go as bs
+    go _ (x:_)         = x
+    go _ _             = error "Common.middle: empty list"

@@ -21,6 +21,8 @@ common solution
   default-extensions:
     NumericUnderscores
     TupleSections
+    TypeApplications
+    ViewPatterns
 
   hs-source-dirs:     solutions
   default-language:   Haskell2010
@@ -69,3 +71,7 @@ executable day8
 executable day9
   import:  solution
   main-is: Day9.hs
+
+executable day10
+  import:  solution
+  main-is: Day10.hs

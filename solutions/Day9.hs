@@ -1,7 +1,5 @@
 import           Common
 import           Data.Containers.ListUtils
-import           Data.List
-import           Data.Maybe
 import           Data.Ord
 import           Math.Geometry.Grid
 import           Math.Geometry.Grid.Square

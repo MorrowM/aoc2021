@@ -1,6 +1,5 @@
 import           Common
-import           Data.List
-import qualified Data.Map  as M
+import qualified Data.Map as M
 
 main :: IO ()
 main = parseAndRun 8 pInput solve1 solve2

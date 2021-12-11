@@ -1,6 +1,5 @@
 {-# LANGUAGE RankNTypes #-}
 import           Common
-import           Data.List
 
 main :: IO ()
 main = run 3 solve1 solve2

@@ -1,5 +1,4 @@
 import           Common
-import           Data.List
 
 main :: IO ()
 main = run 4 solve1 solve2
