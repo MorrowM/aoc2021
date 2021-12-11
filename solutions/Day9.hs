@@ -1,10 +1,8 @@
 import           Common
+import           Common.Grid
 import           Data.Containers.ListUtils
 import           Data.Ord
-import           Math.Geometry.Grid
-import           Math.Geometry.Grid.Square
-import qualified Math.Geometry.GridMap      as G
-import           Math.Geometry.GridMap.Lazy
+import qualified Math.Geometry.GridMap     as G
 
 main :: IO ()
 main = parseAndRun 9 pBoard solve1 solve2
