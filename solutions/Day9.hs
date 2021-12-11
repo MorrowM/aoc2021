@@ -15,7 +15,6 @@ type Cell = Index RectSquareGrid
 pBoard :: Parser Board
 pBoard = convert <$> sepEndBy1 (many pDigit) newline
   where
-    pDigit = read . pure <$> digit
     convert xss = lazyGridMap (rectSquareGrid r c) (concat xss)
       where
         r = length (head xss)

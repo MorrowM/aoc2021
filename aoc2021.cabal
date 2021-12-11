@@ -7,8 +7,9 @@ maintainer:    themorrowm@gmail.com
 common solution
   build-depends:
     , adjunctions
+    , ansi-terminal
     , aoc2021
-    , base         ^>=4.14.3.0
+    , base           ^>=4.14.3.0
     , containers
     , grid
     , parsec
@@ -19,6 +20,7 @@ common solution
     -fhide-source-paths -Wno-unused-do-bind
 
   default-extensions:
+    BangPatterns
     NumericUnderscores
     TupleSections
     TypeApplications
@@ -29,11 +31,16 @@ common solution
 
 library
   build-depends:
-    , base    ^>=4.14.3.0
+    , ansi-terminal
+    , base           ^>=4.14.3.0
+    , grid
     , parsec
 
   hs-source-dirs:   common
-  exposed-modules:  Common
+  exposed-modules:
+    Common
+    Common.Grid
+
   default-language: Haskell2010
 
 executable day1
@@ -75,3 +82,7 @@ executable day9
 executable day10
   import:  solution
   main-is: Day10.hs
+
+executable day11
+  import:  solution
+  main-is: Day11.hs

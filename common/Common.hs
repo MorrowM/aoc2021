@@ -1,3 +1,4 @@
+{-# LANGUAGE LambdaCase          #-}
 {-# LANGUAGE RankNTypes          #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 module Common
@@ -12,6 +13,7 @@ module Common
   , getLines
   , parseAndRun
   , pInt
+  , pDigit
   , pComma
   , run
   , showE
@@ -23,6 +25,8 @@ module Common
   , justify
   , readMaybe
   , middle
+  , color
+  , chunksOf
   ) where
 import           Control.Exception
 import           Control.Monad
@@ -32,7 +36,8 @@ import           Data.Foldable
 import           Data.List
 import           Data.Maybe
 import           GHC.Stack
-import           Text.Parsec        hiding (Line, count, uncons)
+import           System.Console.ANSI
+import           Text.Parsec         hiding (Line, count, uncons)
 import           Text.Parsec.String
 import           Text.Printf
 import           Text.Read
@@ -45,6 +50,9 @@ getLines = fmap lines . readFile
 
 pInt :: Parser Int
 pInt = read <$> many1 digit
+
+pDigit :: Parser Int
+pDigit = read . pure <$> digit
 
 pComma :: Parser Char
 pComma = char ','
@@ -89,3 +97,12 @@ middle xs = go xs xs
     go (_:_:as) (_:bs) = go as bs
     go _ (x:_)         = x
     go _ _             = error "Common.middle: empty list"
+
+color :: Color -> String -> IO ()
+color c s = do
+  setSGR [SetColor Foreground Vivid c]
+  putStr s
+  setSGR []
+
+chunksOf :: Int -> [a] -> [[a]]
+chunksOf n = unfoldr (\case [] -> Nothing; xs -> Just $ splitAt n xs)
